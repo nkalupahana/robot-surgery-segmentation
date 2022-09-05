@@ -56,8 +56,6 @@ if __name__ == '__main__':
             for mask_folder in mask_folders:
                 print(str(mask_folder / file_name.name))
                 mask = cv2.imread(str(mask_folder / file_name.name), 0)
-                if mask is None:
-                    continue
 
                 if 'Bipolar_Forceps' in str(mask_folder):
                     mask_instruments[mask > 0] = 1
