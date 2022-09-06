@@ -54,7 +54,6 @@ if __name__ == '__main__':
             mask_instruments = np.zeros((old_h, old_w))
 
             for mask_folder in mask_folders:
-                print(str(mask_folder / file_name.name))
                 mask = cv2.imread(str(mask_folder / file_name.name), 0)
 
                 if 'Bipolar_Forceps' in str(mask_folder):
