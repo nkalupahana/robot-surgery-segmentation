@@ -38,10 +38,10 @@ if __name__ == '__main__':
         instrument_mask_folder = (cropped_train_path / instrument_folder / 'instruments_masks')
         instrument_mask_folder.mkdir(exist_ok=True, parents=True)
 
-        mask_folders = list((train_path / instrument_folder / 'ground_truth').glob('*'))
+        mask_folders = list((train_path / instrument_folder / 'right_labels').glob('*'))
         # mask_folders = [x for x in mask_folders if 'Other' not in str(mask_folders)]
 
-        for file_name in tqdm(list((train_path / instrument_folder / 'left_frames').glob('*'))):
+        for file_name in tqdm(list((train_path / instrument_folder / 'right_frames').glob('*'))):
             img = cv2.imread(str(file_name))
             old_h, old_w, _ = img.shape
 
