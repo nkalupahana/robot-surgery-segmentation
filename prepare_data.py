@@ -49,7 +49,7 @@ if __name__ == '__main__':
             cv2.imwrite(str(cropped_train_path / instrument_folder / 'images' / (file_name.stem + '.jpg')), img,
                         [cv2.IMWRITE_JPEG_QUALITY, 100])
 
-            mask_binary = np.zeros((old_h, old_w))
+            mask_binary = np.zeros((img.shape[0], img.shape[1]))
             mask_parts = np.zeros((old_h, old_w))
             mask_instruments = np.zeros((old_h, old_w))
 
@@ -78,7 +78,7 @@ if __name__ == '__main__':
                     mask_parts[mask == 20] = 2  # Wrist
                     mask_parts[mask == 30] = 3  # Claspers
 
-            mask_binary = (mask_binary[h_start: h_start + height, w_start: w_start + width] > 0).astype(
+            mask_binary = (mask_binary > 0).astype(
                 np.uint8) * binary_factor
             mask_parts = (mask_parts[h_start: h_start + height, w_start: w_start + width]).astype(
                 np.uint8) * parts_factor
