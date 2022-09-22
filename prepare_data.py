@@ -50,8 +50,8 @@ if __name__ == '__main__':
                         [cv2.IMWRITE_JPEG_QUALITY, 100])
 
             mask_binary = np.zeros((img.shape[0], img.shape[1]))
-            mask_parts = np.zeros((old_h, old_w))
-            mask_instruments = np.zeros((old_h, old_w))
+            mask_parts = np.zeros((img.shape[0], img.shape[1]))
+            mask_instruments = np.zeros((img.shape[0], img.shape[1]))
 
             for mask_folder in mask_folders:
                 mask = cv2.imread(str(mask_folder / file_name.name), 0)
@@ -80,9 +80,9 @@ if __name__ == '__main__':
 
             mask_binary = (mask_binary > 0).astype(
                 np.uint8) * binary_factor
-            mask_parts = (mask_parts[h_start: h_start + height, w_start: w_start + width]).astype(
+            mask_parts = (mask_parts).astype(
                 np.uint8) * parts_factor
-            mask_instruments = (mask_instruments[h_start: h_start + height, w_start: w_start + width]).astype(
+            mask_instruments = (mask_instruments).astype(
                 np.uint8) * instrument_factor
 
             cv2.imwrite(str(binary_mask_folder / file_name.name), mask_binary)
